@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Socket-Test</title>
+</head>
+<body style="background-color:white;">
+
+    <h1 style="background-color:white;">Socket</h1>
+    <form id="emit" method="POST" action='#'>
+        <input type="text" name="emit_data" id="emit_data" placeholder="Message">
+        <input type="submit" value="Send Message">
+    </form>
+    <form id="broadcast" method="POST" action='#'>
+        <input type="text" name="broadcast_data" id="broadcast_data" placeholder="Message">
+        <input type="submit" value="Send Broadcast Message">
+    </form>
+
+    <form id="disconnect" method="POST" action="#">
+        <input type="submit" value="Disconnect Server">
+    </form>
+    <h2 style="background-color:white;">Logs</h2>
+    <div id="log" ></div>
+    <!-- <script>
+        // Create WebSocket connection.
+        const socket = new WebSocket("ws://localhost:5000");
+
+        // Connection opened
+        socket.addEventListener('open', function (event) {
+            socket.send('Hello Server!');
+        });
+
+        // Listen for messages
+        socket.addEventListener('message', function (event) {
+            console.log('Message from server ', event.data);
+        });
+    </script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var socket = io();
+        socket.on('connect', function() {
+            socket.emit('my event', {data: 'I\'m connected!'});
+        });
+        socket.on('message', () => {
+
+        })
+    </script>
+</body>
+</html>
